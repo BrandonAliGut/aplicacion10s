@@ -70,6 +70,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "hello",
+    "User_serializer",
+    'rest_framework',
+    'knox',
 ]
 
 MIDDLEWARE = [
@@ -179,3 +182,9 @@ WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK  = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'knox.auth.Tokenauthentication',
+    ]
+}
