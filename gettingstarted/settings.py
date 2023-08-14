@@ -72,7 +72,7 @@ INSTALLED_APPS = [
     "hello",
     "User_serializer",
     'rest_framework',
-    'knox',
+    "knox",
 ]
 
 MIDDLEWARE = [
@@ -123,7 +123,7 @@ DATABASES = {
 }
 
 import dj_database_url
-database_url = 'postgres://cpantasmaregiter_user:BO5ySCKd8Ghw2CqyxoOsg0wgbpg60pFD@dpg-cjc578ndb61s73cq6lf0-a.oregon-postgres.render.com/cpantasmaregiter'
+database_url = 'postgres://baseuserapp_user:NwojGn3zC58IRTEgFJfb4vDIMi3sfMSg@dpg-cjcqtas5kgrc73d7fbeg-a.oregon-postgres.render.com/baseuserapp'
 DATABASES['default'] = dj_database_url.parse(database_url)
 
 
@@ -169,6 +169,7 @@ STORAGES = {
     # Enable WhiteNoise's GZip and Brotli compression of static assets:
     # https://whitenoise.readthedocs.io/en/latest/django.html#add-compression-and-caching-support
     "staticfiles": {
+        
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
@@ -183,8 +184,12 @@ WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-REST_FRAMEWORK  = {
+REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'knox.auth.Tokenauthentication',
+        #'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ]
 }
+
